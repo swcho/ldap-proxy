@@ -1,0 +1,14 @@
+{
+  "name": "ldap-proxy",
+  "version": "1.0.0",
+  "description": "Simple LDAP proxy on top of ldapjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ldapjs": "^0.7.1"
+  }
+}
