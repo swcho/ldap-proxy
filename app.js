@@ -1,4 +1,5 @@
 
+var assert = require('assert');
 var ldap = require('ldapjs');
 var fs = require('fs');
 
@@ -33,7 +34,7 @@ server.search(config.searhBase, function(req, res, next) {
 
     //console.log('id: ' + id);
     //console.log('base: ' + base);
-    //console.log('filter: ' + filter);
+    console.log('filter: ' + filter);
     //console.log('scope: ' + scope);
     var opts = {
         filter: filter,
@@ -41,7 +42,7 @@ server.search(config.searhBase, function(req, res, next) {
     };
 
     client.search(base, opts, function(err, search) {
-        //assert.ifError(err);
+        assert.ifError(err);
 
         search.on('searchEntry', function(entry) {
             //console.log('entry: ' + JSON.stringify(entry.object, null, 2));
@@ -78,5 +79,11 @@ server.listen(1389, function() {
         } else {
             console.log('client bind successful');
         }
+    });
+    client.on('end', function() {
+        process.exit();
+    });
+    client.on('error', function() {
+        process.exit();
     });
 });
